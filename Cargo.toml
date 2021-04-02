@@ -1,0 +1,20 @@
+# You must change these to your own details.
+[package]
+name = "silver-palm-tree"
+description = "A tennis for two implementation in rust for web."
+version = "0.1.0"
+authors = ["Zageron <hello@zageron.com>"]
+categories = ["wasm"]
+readme = "README.md"
+edition = "2018"
+publish = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+lto = true
+
+[dependencies]
+wasm-bindgen = "0.2.73"
+web-sys = { version = "0.3.50", features = ['console'] }
