@@ -1,5 +1,22 @@
 # silver palm tree
 
+## Updating
+
+```sh
+# NPM
+ncu # Check for updates
+ncu -u # Update the package.json file with new updates.
+npm install # Will update to match the new package.json file.
+
+# Rust (Be careful with rust, it might break Gecko rendering for wgpu.)
+rustup update # Update toolchain
+cargo install-update --git --all # Update installed tools
+
+# Cargo Dependencies
+cargo update # Check for updates.
+cargo build # Acquire and build with new dependencies.
+```
+
 ## How to install
 
 ```sh
