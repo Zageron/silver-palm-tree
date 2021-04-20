@@ -16,15 +16,18 @@ crate-type = ["cdylib"]
 lto = true
 
 [dependencies]
-base64 = "*"
+anyhow = "1.0.40"
+cgmath = "0.18.0"
+base64 = "0.13.0"
+bytemuck = { version = "1.5.1", features = [ "derive" ] }
 console_error_panic_hook = "0.1.6"
 console_log = "0.2.0"
 js-sys = "0.3.50"
 log = "*"
 tobj = "*"
-wasm-bindgen = "*"
-wasm-bindgen-futures = "0.4.22"
-wgpu = { rev = "82b7068498864de44bbdf3e02d086c03d83a04e0", git = "https://github.com/gfx-rs/wgpu-rs" }
+wasm-bindgen = "0.2.73"
+wasm-bindgen-futures = "0.4.23"
+wgpu = { rev = "1806a5bd4d0a8740774969c92f51ad9a906a2e24", git = "https://github.com/gfx-rs/wgpu-rs.git" }
 web-sys = { version = "=0.3.50", features = [
     "console",
     "Document",
