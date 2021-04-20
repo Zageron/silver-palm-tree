@@ -6,7 +6,7 @@ pub struct State {
     device: wgpu::Device,
     queue: wgpu::Queue,
     sc_desc: wgpu::SwapChainDescriptor,
-    swap_chain: wgpu::SwapChain,
+    pub swap_chain: wgpu::SwapChain,
     size: winit::dpi::PhysicalSize<u32>,
     clear_color: wgpu::Color,
 }

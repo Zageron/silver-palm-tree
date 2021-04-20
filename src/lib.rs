@@ -1,3 +1,4 @@
+use instant::Instant;
 use render::State;
 use wasm_bindgen::prelude::*;
 use winit::{
@@ -53,23 +54,25 @@ async fn run(event_loop: EventLoop<()>, window: Window) {
 
     let size = window.inner_size();
     event_loop.run(move |event, _, control_flow| {
-        *control_flow = ControlFlow::Wait;
+        *control_flow = ControlFlow::Poll;
         match event {
+            Event::NewEvents(_) => {}
             Event::WindowEvent {
                 event: WindowEvent::Resized(size),
                 ..
             } => {
                 state.resize(size);
+                window.request_redraw();
             }
             Event::RedrawRequested(_) => {
                 state.render();
+                log::info!("update");
             }
             Event::WindowEvent {
                 event: WindowEvent::CloseRequested,
                 ..
             } => *control_flow = ControlFlow::Exit,
 
-            Event::NewEvents(_) => {}
             Event::DeviceEvent { device_id, event } => {}
             Event::UserEvent(_) => {}
             Event::Suspended => {
@@ -77,8 +80,11 @@ async fn run(event_loop: EventLoop<()>, window: Window) {
             }
             Event::Resumed => {
                 log::info!("Resumed");
+                window.request_redraw();
             }
-            Event::MainEventsCleared => {}
+            Event::MainEventsCleared => {
+                window.request_redraw();
+            }
             Event::RedrawEventsCleared => {}
             Event::LoopDestroyed => {}
             _ => {}
